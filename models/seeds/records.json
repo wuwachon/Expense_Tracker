@@ -3,42 +3,42 @@
     "name": "午餐",
     "date": "2022-06-20",
     "amount": 120,
-    "user": "user1",
+    "user": "廣志",
     "category": "食"
   },
   {
     "name": "應酬",
     "date": "2022-06-20",
     "amount": 2500,
-    "user": "user1",
+    "user": "廣志",
     "category": "交際"
   },
   {
     "name": "加油",
     "date": "2022-06-20",
     "amount": 600,
-    "user": "user1",
+    "user": "廣志",
     "category": "行"
   },
   {
     "name": "買菜",
     "date": "2022-06-20",
     "amount": 600,
-    "user": "user2",
+    "user": "美冴",
     "category": "食"
   },
   {
     "name": "房租",
     "date": "2022-06-20",
     "amount": 20000,
-    "user": "user2",
+    "user": "美冴",
     "category": "住"
   },
   {
     "name": "女兒學費",
     "date": "2022-06-20",
     "amount": 30000,
-    "user": "user2",
+    "user": "美冴",
     "category": "育"
   }
 ]

@@ -1,10 +1,10 @@
 [
-  {"name": "食", "icon": "fa-utensils"},
-  {"name": "衣", "icon": "fa-shirt"},
-  {"name": "住", "icon": "fa-house-chimney"},
-  {"name": "行", "icon": "fa-car-side"},
-  {"name": "育", "icon": "fa-graduation-cap"},
-  {"name": "樂", "icon": "fa-face-laugh-beam"},
-  {"name": "交際", "icon": "fa-handshake-simple"},
-  {"name": "其他", "icon": "fa-pen"}
+  {"id": 1, "name": "食", "icon": "fa-utensils"},
+  {"id": 2, "name": "衣", "icon": "fa-shirt"},
+  {"id": 3, "name": "住", "icon": "fa-house-chimney"},
+  {"id": 4, "name": "行", "icon": "fa-car-side"},
+  {"id": 5, "name": "育", "icon": "fa-graduation-cap"},
+  {"id": 6, "name": "樂", "icon": "fa-face-laugh-beam"},
+  {"id": 7, "name": "交際", "icon": "fa-handshake-simple"},
+  {"id": 8, "name": "其他", "icon": "fa-pen"}
 ]

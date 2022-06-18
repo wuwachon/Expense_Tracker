@@ -13,15 +13,16 @@
 <body>
   {{!-- Nav Bar --}}
   <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
+    <div class="container-fluid px-5">
       <a class="navbar-brand fs-2 fw-bold" href="/">
         <i class="fa-solid fa-sack-dollar"></i>
         家庭記帳本
       </a>
+      <a href="/users/login" type="button" class="btn btn-outline-warning">Login</a>
     </div>
   </nav>
   {{!-- Main --}}
-  <div class="container">
+  <div class="container mt-5">
     {{{ body }}}
   </div>
   <!-- Bootstrap -->

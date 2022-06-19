@@ -22,11 +22,11 @@
       <div class="mb-3 row">
         <label for="category" class="col-sm-3 col-form-label fs-3">類別*：</label>
         <div class="col-sm-9">
-          <select class="form-select form-select-lg fs-3" id="category" name="category" aria-label=".form-select-lg example">
+          <select class="form-select form-select-lg fs-3" id="categoryId" name="categoryId" aria-label=".form-select-lg example">
             <option selected>類別</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            {{#each categories}}
+            <option value="{{ this._id }}">{{ this.name }}</option>
+            {{/each}}
           </select>
         </div>
       </div>

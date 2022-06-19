@@ -5,10 +5,14 @@ const Category = require('../../models/category')
 const Record = require('../../models/record')
 
 // add new record
-router.get('/new', (req, res) => {
-  res.render('new')
+router.get('/new', async (req, res) => {
+  const categories = await Category.find().lean().sort('id')
+  res.render('new', { categories })
 })
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+  const record = req.body
+  record.userId = "62aecac090b87af69a87c5a2"
+  await Record.create(record)
   res.redirect('/')
 })
 // edit a record
@@ -28,7 +32,10 @@ router.put('/:id', async (req, res) => {
   res.redirect('/')
 })
 // delete a record
-router.delete('/:id/delete', (req, res) => {
+router.delete('/:id/delete', async (req, res) => {
+  const _id = req.params.id
+  const record = await Record.findById(_id)
+  await record.remove()
   res.redirect('/')
 })
 

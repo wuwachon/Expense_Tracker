@@ -1,12 +1,12 @@
 {{!-- category dropdown --}}
 <div class="row mt-3">
   <div class="col-6 mx-auto">
-    <form action="/category" method="POST">
-      <select class="form-select form-select-lg mb-3" id="category" name="category" aria-label=".form-select-lg example">
-        <option selected>類別</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+    <form action="/">
+      <select class="form-select form-select-lg mb-3" id="category" name="category" aria-label=".form-select-lg example" onchange="form.submit()">
+        <option selected>{{ title }}</option>
+        {{#each categories}}
+        <option value="{{ this._id }}">{{ this.name }}</option>
+        {{/each}}
       </select>
     </form>
   </div>
@@ -33,12 +33,12 @@
       <li class="row">
         <div class="col-8 list-group-item list-group-item-light">
           <div class="row">
-            <i class="fa-solid {{ this.category }} fa-utensils col-2 align-self-center text-end" style="font-size: 55px; color: lightblue"></i>
+            <i class="fa-solid {{ this.category }} col-2 align-self-center text-end" style="font-size: 55px; color: lightblue"></i>
             <div class="col-7 align-self-center">
-              <h3 class="fw-bold"></h3>
-              <h5 class="fw-bold"></h5>
+              <h3 class="fw-bold">{{ this.name }}</h3>
+              <h5 class="fw-bold">{{ this.date }}</h5>
             </div>
-            <div class="col-3 text-end align-self-center fs-2"></div>
+            <div class="col-3 text-end align-self-center fs-2">{{ this.amount }}</div>
           </div>
         </div>
         <div class="col-4 text-center align-self-center">

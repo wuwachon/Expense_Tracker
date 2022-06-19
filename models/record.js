@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const recordSchema = new Schema({
   name: {type: String, required: true},
-  date: {type: Date, required: true},
+  date: {type: String, required: true},
   amount: {type: Number, required: true},
   userId: {
     type: Schema.Types.ObjectId,

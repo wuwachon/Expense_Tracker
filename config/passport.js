@@ -34,7 +34,7 @@ module.exports = (app) => {
     async (accessToken, refreshToken, profile, done) => {
       try {
         const { name, email } = profile._json
-        const userFind = User.findOne({ email })
+        const userFind = await User.findOne({ email })
         if (userFind) return done(null, userFind)
         const randomPassword = Math.random().toString(36).slice(-8)
         const user = await User.create({
@@ -57,7 +57,7 @@ module.exports = (app) => {
     async (accessToken, refreshToken, profile, done) => {
       try {
         const { name, email } = profile._json
-        const userFind = User.findOne({ email })
+        const userFind = await User.findOne({ email })
         if (userFind) return done(null, userFind)
         const randomPassword = Math.random().toString(36).slice(-8)
         const user = await User.create({

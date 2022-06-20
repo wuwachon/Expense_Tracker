@@ -6,10 +6,11 @@ const Record = require('../../models/record.js')
 
 router.get('/', async (req, res) => {
   const categoryId = req.query.category
+  const userId = req.user._id
   const categorySelect = await Category.findById(categoryId).lean()
   const title = categoryId? categorySelect.name : '類型'
   const categories = await Category.find().lean().sort('id')
-  const recordsFind = categoryId? await Record.find({ categoryId }).lean() : await Record.find().lean()
+  const recordsFind = categoryId? await Record.find({ categoryId, userId }).lean() : await Record.find({ userId }).lean()
   const records = []
   let totalAmount = 0
   await Promise.all(

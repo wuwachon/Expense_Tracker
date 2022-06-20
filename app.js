@@ -2,6 +2,8 @@ const express = require('express')
 const { create } = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const session = require('express-session')
+
 require('./config/mongoose')
 if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
@@ -21,6 +23,13 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 // method-override
 app.use(methodOverride('_method'))
+// express-session use
+app.use(session({
+  secret: process.env.SESSION_SECERT,
+  name: 'Users',
+  resave: false,
+  saveUninitialized: true
+}))
 
 // routes
 app.use(routes)

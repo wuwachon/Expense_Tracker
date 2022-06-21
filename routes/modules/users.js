@@ -1,5 +1,6 @@
 const express = require('express')
 const passport = require('passport')
+const bcrypt = require('bcryptjs')
 const router = express.Router()
 const User = require('../../models/user')
 
@@ -30,7 +31,13 @@ router.post('/register', async (req, res) => {
       password,
       confirmPassword
     })
-    await User.create({ name, email, password })
+    const salt = await bcrypt.genSalt(10)
+    const hash = await bcrypt.hash(password, salt)
+    await User.create({ 
+      name,
+      email,
+      password: hash
+    })
     res.redirect('/users/login')
   } catch(err) {
     console.log(err)

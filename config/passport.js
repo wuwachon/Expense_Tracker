@@ -2,6 +2,7 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const FacebookStrategy = require('passport-facebook').Strategy
 const GoogleStrategy = require('passport-google-oauth20').Strategy
+const bcrypt = require('bcryptjs')
 
 const User = require('../models/user')
 
@@ -18,7 +19,8 @@ module.exports = (app) => {
       try {
         const user = await User.findOne({ email })
         if (!user) return done(null, false, req.flash('faillogin_msg', '此Email沒有被註冊過'))
-        if (password !== user.password) return done(null, false, req.flash('faillogin_msg', '帳號或密碼不正確'))
+        const isMatch = await bcrypt.compare(password, user.password)
+        if (!isMatch) return done(null, false, req.flash('faillogin_msg', '帳號或密碼不正確'))
         return done(null, user)
       } catch(err) {
         done(err, false)
@@ -37,10 +39,12 @@ module.exports = (app) => {
         const userFind = await User.findOne({ email })
         if (userFind) return done(null, userFind)
         const randomPassword = Math.random().toString(36).slice(-8)
+        const salt = await bcrypt.genSalt(10)
+        const hash = await bcrypt.hash(randomPassword, salt)
         const user = await User.create({
           name,
           email,
-          password: randomPassword
+          password: hash
         })
         return done(null, user)
       } catch(err) {
@@ -60,10 +64,12 @@ module.exports = (app) => {
         const userFind = await User.findOne({ email })
         if (userFind) return done(null, userFind)
         const randomPassword = Math.random().toString(36).slice(-8)
+        const salt = await bcrypt.genSalt(10)
+        const hash = await bcrypt.hash(randomPassword, salt)
         const user = await User.create({
           name,
           email,
-          password: randomPassword
+          password: hash
         })
         return done(null, user)
       } catch(err) {

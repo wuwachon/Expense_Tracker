@@ -11,7 +11,7 @@ router.get('/new', async (req, res) => {
 })
 router.post('/', async (req, res) => {
   const record = req.body
-  record.userId = "62aecac090b87af69a87c5a2"
+  record.userId = req.user._id
   await Record.create(record)
   res.redirect('/')
 })
